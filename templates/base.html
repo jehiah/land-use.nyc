@@ -1,0 +1,177 @@
+{{define "base"}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{template "title" .}}</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;400&display=swap');
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.navbar-header {
+  background: #139f15;
+  color: #fff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.subnav {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.subnav a {
+  max-width: 20em;
+  padding: .5rem .5rem;
+}
+.subnav .nav-link {
+  color: #000;
+  font-weight: 200;
+  display: inline-block;
+}
+.subnav .nav-link:hover {
+  color: #78d97a;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #5fd460;  
+}
+.subnav .nav-link.active {
+  font-weight: 400;
+  border-bottom: 2px solid #36c032;
+}
+.navbar-brand {
+  padding-right: 1em;
+  width: 240px;
+  text-align: left;
+  margin-right: 0;
+}
+.navbar-header a {
+  color: inherit;
+}
+.navbar-right {
+  padding: 0.3em 0.75em;
+  width: 240px;
+  text-align: right;
+}
+
+.h1 {
+  font-size: 1.2rem;
+}
+@media (min-width: 992px) {
+  .h1 {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .h1 {
+    font-size: 1.2rem;
+    order: -1!important;
+  }
+  .navbar-right {
+    font-size: .8rem;
+    width: auto;
+    padding: 0.25rem 0;
+  }
+  .navbar-brand {
+    font-size: .8rem;
+    padding-right: 0;
+    width: auto;
+  }
+  .navbar-brand > img {
+    width: 30px;
+    height: 30px;
+    padding-right: 5px;
+  }
+}
+
+
+h3 {
+  font-size: calc(1.3rem + .1vw);
+}
+h4 {
+  font-size: calc(1.15rem + .1vw);
+}
+
+.btn-primary {
+  background: #6bd769;
+  border-color: #329b2c;
+}
+
+.file {
+  line-height: 1rem;
+  font-size: .75rem;
+  padding: .25em 0.6em;
+  text-decoration: inherit;
+  /*font-weight: 200;*/
+}
+a.file-link:link {
+  text-decoration: none;
+}
+.file {
+  /*background-color: #d0d4dd;*/
+  background-color: #e4efe4;
+  color: #2fa639;
+}
+
+.file:hover{
+  color: #e4e6ef;
+  background-color: #35a62f;
+}
+
+footer {
+  text-align: center;
+  font-size: .75rem;
+  color: #999;
+  padding: 2rem 1rem;
+}
+footer a:link, footer a:visited {
+  color: #777;
+}
+footer p {
+  margin-bottom: .5rem;
+}
+</style>
+{{block "head" .}}{{end}}
+
+</head>
+<body>
+
+<nav class="navbar navbar-header">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://land-use.nyc/">
+    <!-- <img src="/static/logo.png" alt="" width="55" height="55" class="d-inline-block align-text-middle" style="margin:-10px;">land-use.nyc</a> -->
+    <span class="h1">New York City Council Land Use</span>
+    <a href="https://legistar.council.nyc.gov/Legislation.aspx" class="navbar-right"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> legistar.council.nyc.gov</a> 
+  </div>
+</nav>
+
+<nav class="subnav">
+  <div>
+    <a class="nav-link {{if eq .Page "search"}}active{{end}}" href="/">Index</a>
+  </div>
+</nav>
+
+
+<div class="container">
+  {{ template "middle" .}}
+
+<div class="row">
+
+<footer>
+<p>Made with ❤️ by <a href="https://jehiah.cz/">@jehiah</a>. Code on <a href="https://github.com/jehiah/land-use.nyc/">GitHub</a>.</p>
+<p>Data from <a href="https://council.nyc.gov/legislation/api/">NYC Council Legislative API</a> via <a href="https://github.com/jehiah/nyc_legislation">as archived on GitHub</a></p>
+{{ block "last-updated" .}}{{end}}
+</footer>
+
+</div>
+
+</div>
+
+{{ block "javascript" .}}{{end}}
+
+  </body>
+</html>
+{{end}}
